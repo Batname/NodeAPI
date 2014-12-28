@@ -1,0 +1,18 @@
+.container-fluid
+    .row
+        .col-md-2
+            // Sidebar content
+            | Search by:
+            input(ng-model='query')
+            br
+            | Sort by:
+            select(ng-model='orderProp')
+                option(value='title') title
+                option(value='author') author
+        .col-md-10
+            // Body content
+            ul.phones
+                li.thumbnail.phone-listing(ng-repeat='article in articles | filter:query | orderBy:orderProp')
+                    p {{article.title}}
+                    p {{article.author}}
+                    p {{article.description}}
